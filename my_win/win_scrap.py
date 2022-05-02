@@ -3,7 +3,12 @@ import os
 import time
 import tkinter as tk
 import tkinter.filedialog
+
+import win32api
+import win32con
 import win32gui
+import win32print
+import win32process
 from PIL import ImageGrab
 
 
@@ -25,13 +30,34 @@ def capture_current_windows():
     rect = RECT()
 
     HWND = win32gui.GetForegroundWindow()
+    print(HWND)
 
     ctypes.windll.user32.GetWindowRect(HWND, ctypes.byref(rect))
+    process_id = win32process.GetWindowThreadProcessId(HWND)
+    print(f'process id: {process_id}')
 
-    rangle = (rect.left + 2, rect.top + 2, rect.right + 2, rect.bottom + 2)
+    size_ = 1
+    left_ = (rect.left + 2) * size_
+    top_ = (rect.top + 2) * size_
+    right_ = (rect.right + 2) * size_
+    bottom_ = (rect.bottom + 2) * size_
+    rangle = (left_, top_, right_, bottom_)
 
     pic = ImageGrab.grab(rangle)
     save_pic(pic)
+
+
+def get_real_resolution():
+    hDc = win32gui.GetDC(0)
+    w = win32print.GetDeviceCaps(hDc, win32con.DESKTOPHORZRES)
+    h = win32print.GetDeviceCaps(hDc, win32con.DESKTOPVERTRES)
+    return w, h
+
+
+def get_screen_size():
+    w = win32api.GetSystemMetrics(0)
+    h = win32api.GetSystemMetrics(1)
+    return w, h
 
 
 def capture_choose_windows():

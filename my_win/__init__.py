@@ -1,2 +1,2 @@
-import win_sys_tray as tray
-import win_scrap as scrap
+import my_win.win_sys_tray as tray
+import my_win.win_scrap as scrap
