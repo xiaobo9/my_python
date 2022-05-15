@@ -1,0 +1,39 @@
+<svg width="500" height="400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" version="1.1"
+     xmlns:xlink="http://www.w3.org/1999/xlink">
+    <g font-family="Source Han Sans CN，Trebuchet MS, Helvetica, sans-serif">
+        <text x="0" y="20" fill="red">原始文字</text>
+        <text x="0" y="50" fill="red" transform="rotate(30 20,40)">旋转的文字</text>
+        <defs>
+            <path id="path1" d="M20,100 a1,1 0 0,0 100,0"/>
+        </defs>
+        <text x="100" y="100" style="fill:red;">
+            <textPath xlink:href="#path1">路 径 上 的 文 字 路 径 上 的 文 字</textPath>
+        </text>
+    </g>
+
+    <path id="lineAB" d="M 100 350 l 150 -300" stroke="red"
+          stroke-width="3" fill="none"/>
+    <path id="lineBC" d="M 250 50 l 150 300" stroke="red"
+          stroke-width="3" fill="none"/>
+    <path d="M 175 200 l 150 0" stroke="green" stroke-width="3"
+          fill="none"/>
+    <path d="M 100 350 q 150 -300 300 0" stroke="blue"
+          stroke-width="5" fill="none"/>
+    <!-- Mark relevant points -->
+    <g stroke="black" stroke-width="3" fill="black">
+        <circle id="pointA" cx="100" cy="350" r="3"/>
+        <circle id="pointB" cx="250" cy="50" r="3"/>
+        <circle id="pointC" cx="400" cy="350" r="3"/>
+    </g>
+    <!-- Label the points -->
+    <g font-size="30" font="sans-serif" fill="black" stroke="none"
+       text-anchor="middle">
+        <text x="100" y="350" dx="-30">A</text>
+        <text x="250" y="50" dy="-10">B</text>
+        <text x="400" y="350" dx="30">C</text>
+        <text x="250" y="350" dx="0">中间</text>
+    </g>
+    <!-- 五角星，中上，左下，右中，左中，右下 -->
+    <polygon points="100,10 40,198 190,78 10,78 160,198"
+             style="fill:lime;stroke:purple;stroke-width:5;fill-rule:nonzero;"/>
+</svg>
